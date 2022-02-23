@@ -307,6 +307,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c0bd274ed9d5c644bd9d70597a97802, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  meteor: {fileID: 2881305185090434006, guid: 0e71f1c070c585147b5d2587082170e3, type: 3}
   dashSpeed: 5
   dashLength: 0.2
   dashCooldown: 1
