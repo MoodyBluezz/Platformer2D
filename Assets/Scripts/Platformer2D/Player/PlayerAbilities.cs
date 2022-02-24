@@ -21,6 +21,11 @@ namespace Platformer2D.Player
 		private bool _isInvisibleAbility = false;
 		private bool _isMeteorAbility = false;
 		private bool _isMeteorAbilityPicked = false;
+		private bool _isMeteorTargetSet = false;
+		private Vector3 _meteorTarget;
+		private float _meteorCooldown = 10f;
+		private float _nextUseTime = 0f;
+
 
 		private void Start()
 		{
@@ -64,16 +69,27 @@ namespace Platformer2D.Player
 			if (PickUpAbility._isAbilityPickedUp)
 				_isMeteorAbilityPicked = true;
 			
-			if (Input.GetKeyDown(KeyCode.M) && _isMeteorAbilityPicked)
+			if (Time.time > _nextUseTime)
 			{
-				meteor = Instantiate(meteor);
-				meteor.transform.position = new Vector3(transform.position.x, 1, transform.position.z);
-				_isMeteorAbility = true;
+				if (Input.GetKeyDown(KeyCode.M) && _isMeteorAbilityPicked)
+				{
+					_nextUseTime = Time.time + _meteorCooldown;
+					meteor = Instantiate(meteor);
+					meteor.transform.position = new Vector3(transform.position.x, 1, transform.position.z);
+					_isMeteorAbility = true;
+					_isMeteorTargetSet = false;
+				}
 			}
-
 			if (_isMeteorAbility)
 			{
-				meteor.transform.position = Vector3.Lerp(meteor.transform.position, new Vector3(transform.position.x + 1, 0, 0), 4 * Time.deltaTime);
+				if (!_isMeteorTargetSet)
+				{
+					_meteorTarget = new Vector3(transform.position.x + 1.2f, 0, 0);
+					_isMeteorTargetSet = true;
+				}
+
+				if (meteor != null)
+					meteor.transform.position = Vector3.Lerp(meteor.transform.position, _meteorTarget, 4 * Time.deltaTime);
 			}
 		}
 

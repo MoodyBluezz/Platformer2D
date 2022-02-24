@@ -1,3 +1,4 @@
+using System;
 using Platformer2D.Ability;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -7,6 +8,7 @@ namespace Platformer2D.Player
 	public class PlayerController : MonoBehaviour
 	{
 		public GameObject gameOverPanel;
+		public GameObject winPanel;
 		public float jumpForce;
 		public float runSpeed;
 		public float jumpTime;
@@ -34,9 +36,18 @@ namespace Platformer2D.Player
 			PlayerMovement();
 			PlayerJump();
         
-			if (Input.GetKeyDown(KeyCode.R) && _isPlayerDead)
+			if (Input.GetKeyDown(KeyCode.R))
 			{
-				SceneManager.LoadScene(0);
+				SceneManager.LoadScene(1);
+			}
+		}
+
+		private void OnTriggerEnter2D(Collider2D col)
+		{
+			if (col.name.Equals("Checkpoint"))
+			{
+				col.GetComponent<Animator>().SetTrigger("onFinish");
+				winPanel.SetActive(true);
 			}
 		}
 
