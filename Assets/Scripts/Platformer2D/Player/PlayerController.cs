@@ -11,16 +11,11 @@ namespace Platformer2D.Player
 		public GameObject winPanel;
 		public float jumpForce;
 		public float runSpeed;
-		public float jumpTime;
 		public LayerMask groundMask;
 		private Rigidbody2D _playerRigidbody;
 		private Collider2D _playerCollider;
 		private Animator _playerAnimator;
-		private bool _isGrounded = false;
-		private bool _isJumping = false;
-		private bool _isDoubleJump = false;
 		private float _movementInput;
-		private static bool _isPlayerDead = false;
 
 		private void Start()
 		{
@@ -65,7 +60,6 @@ namespace Platformer2D.Player
 			var inputKey = Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow);
 			if (IsGrounded() && inputKey)
 			{
-				_isJumping = true;
 				_playerRigidbody.velocity = Vector2.up * jumpForce;
 			}
 			_playerAnimator.SetBool("isJumping", !IsGrounded());
@@ -76,14 +70,12 @@ namespace Platformer2D.Player
 			_playerCollider.enabled = false;
 			_playerAnimator.SetTrigger("playerDeath");
 			gameOverPanel.SetActive(true);
-			_isPlayerDead = true;
 			ResetAllStaticDependencies();
 		}
 
 		private void ResetAllStaticDependencies()
 		{
 			PlayerAbilities._isSkillUsed = false;
-			PickUpAbility._isColliding = false;
 			PickUpAbility._isAbilityPickedUp = false;
 		}
 

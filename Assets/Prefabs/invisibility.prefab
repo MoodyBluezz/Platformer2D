@@ -11,9 +11,8 @@ GameObject:
   - component: {fileID: 1525086931070827325}
   - component: {fileID: 1346985725989572212}
   - component: {fileID: 5430540205959685177}
-  - component: {fileID: 7055198324648895298}
   m_Layer: 0
-  m_Name: Invis
+  m_Name: invisibility
   m_TagString: Ability
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -101,16 +100,3 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 20
---- !u!114 &7055198324648895298
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8392742033792389209}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e1bc75f2574492b49a1e6f297f06611a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  abilityName: Invisibility

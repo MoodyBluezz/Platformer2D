@@ -15,7 +15,6 @@ namespace Platformer2D.Ability
     
         private void ResetAllStaticDependencies()
         {
-            PickUpAbility._isColliding = false;
             PickUpAbility._isAbilityPickedUp = false;
         }
     }

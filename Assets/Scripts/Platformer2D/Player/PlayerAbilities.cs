@@ -45,7 +45,7 @@ namespace Platformer2D.Player
 
 		private void InvisibilityAbility()
 		{
-			if (PickUpAbility._isAbilityPickedUp)
+			if (PickUpAbility._isAbilityPickedUp && PickUpAbility.AbilityName.Equals("invisibility"))
 				_isInvisibleAbility = true;
 
 			if (Input.GetKeyDown(KeyCode.I) && _isInvisibleAbility)
@@ -66,7 +66,7 @@ namespace Platformer2D.Player
 
 		private void MeteorAbility()
 		{
-			if (PickUpAbility._isAbilityPickedUp)
+			if (PickUpAbility._isAbilityPickedUp && PickUpAbility.AbilityName.Equals("meteor"))
 				_isMeteorAbilityPicked = true;
 			
 			if (Time.time > _nextUseTime)

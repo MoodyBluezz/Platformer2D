@@ -35,11 +35,6 @@ namespace Platformer2D.DialogueSystem
 
         private void OnTriggerEnter2D(Collider2D col)
         {
-            if (PickUpAbility._isColliding)
-            {
-                _dialogue.DialogueStateControl(true);
-                _dialogue.GetQuestionDialogueText();
-            }
             if (col.tag.Equals("Enemy") && PlayerAbilities._isSkillUsed)
             {
                 _dialogue.DialogueStateControl(true);

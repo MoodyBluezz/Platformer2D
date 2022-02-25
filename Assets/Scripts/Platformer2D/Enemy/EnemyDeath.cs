@@ -29,7 +29,7 @@ namespace Platformer2D.Enemy
         private void SpawnAbilityAfterDeath()
         {
             var newAbility = Instantiate(abilityPrefab);
-            newAbility.name = "Invisibility";
+            newAbility.name = "invisibility";
         }
     }
 }
